@@ -26,11 +26,22 @@ class Monnitor < CasaElemental
         salon_comun
     end
     def curiosidad
-        mirar
+        puts "quieres mirar?"
+        if gets.chomp == "si"
+            mirar
+        end
+    end
+    def accidente
+        puts "te topaste con una puerta secreta"
+        gets.chomp
+        agujero_en_la_pared
     end
     private
     def mirar
-        agujero_en_la_pared
+        puts "un agujero, seguro?"
+        if gets.chomp == "si"
+            agujero_en_la_pared
+        end
     end
     protected
     def agujero_en_la_pared
@@ -93,8 +104,13 @@ puts "y rodolfo?"
 gets.chomp
 #rodolfo.mirar // no sirve, private
 rodolfo.curiosidad #interesante private>protected
-
+gets.chomp
+rodolfo.accidente
 #aqui he probado como una isntancia de clase de mayor "jerarquia" 
 #puede acceder a metodos privados y protegidos. 
 #en este ejecrcicio existen dos lugares "dificiles de alcanzar"
 #el agujero en la pred, y la seccion prohibida
+#en este caso hay distintas formas de accesar al agujero en la pared, a pesar de ser protected
+#aunque solo un Proffesor podra acceder a la sección prohibida, y solo desde otro metodo
+#cuesta notar diferencias reales entre private y protected, al parecer tiene que ver con self
+#https://tjoye20.medium.com/ruby-access-control-basics-public-vs-private-vs-protected-methods-7788b26e04a7
